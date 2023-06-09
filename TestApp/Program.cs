@@ -48,9 +48,9 @@ namespace Example
             // operation to all of them.
             var batchInput = new List<string> { document };
 
-            var actions = new TextAnalyticsActions()
+            var actions = new TextAnalyticsAction
             {
-                ExtractSummaryActions = new List<ExtractSummaryAction>()
+                ExtractSummaryActions = new List<ExtractSummaryAction>
                 {
                     new ExtractSummaryAction()
                 }
