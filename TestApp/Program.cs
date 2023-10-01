@@ -122,13 +122,14 @@ namespace Example
         private static async Task RunTheTest(OpenAIClient client)
         {
             var completion = new CompletionsOptions();
-            completion.Prompts.Add(@"Write for me a complete implementation of an IIncrementalGenerator in C# which does the following:
+            completion.Prompts.Add(
+                @"Write for me a complete implementation of an IIncrementalGenerator in C# which does the following:
             - Looks for classes, structs, and interfaces which are decorated with the [DecomposeAttribute] and take no parameters or an an assembly which is decorated with the [DecomposeAttribute] and taked exactly one parameter of type Type.
-            - For each public member in each class, struct, interface decorated with the DecomposeAttribute or specified in the constructor of the Assembly-decorating attribute, it should generate a public partial interface  called I[Type][Member], which implements only that public member");
+            - For each public member in each class, struct, interface decorated with the DecomposeAttribute or specified in the constructor of the Assembly-decorating attribute, it should generate a public partial interface  called I[Type][Member], which implements only that public member"
+            );
             completion.ChoicesPerPrompt = 1;
             completion.MaxTokens = 4000;
             completion.User = "DGMJR";
-
 
             var result = await client.GetCompletionsAsync("GPT-35-turbo", completion);
 
